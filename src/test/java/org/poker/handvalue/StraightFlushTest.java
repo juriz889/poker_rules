@@ -16,8 +16,13 @@ class StraightFlushTest {
     }
 
     @Test
-    void handHasStraightFlush_isMet_returnsTrue() {
+    void handHasRoyalStraightFlush_isMet_returnsTrue() {
         assertThat(cut.isMet(new Hand("some hand", HandTestFixtures.createRoyalFlushHand()))).isTrue();
+    }
+
+    @Test
+    void handHasRegularStraightFlush_isMet_returnsTrue() {
+        assertThat(cut.isMet(new Hand("some hand", HandTestFixtures.createStraightFlushHand()))).isTrue();
     }
 
     @Test
