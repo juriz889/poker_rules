@@ -29,4 +29,14 @@ class StraightFlushTest {
     void handHasHighCard_matches_returnsFalse() {
         assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createHighCardHand()))).isFalse();
     }
+
+    @Test
+    void handHasStraight_matches_returnsFalse() {
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createStraightHand()))).isFalse();
+    }
+
+    @Test
+    void handHasFlush_matches_returnsFalse() {
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createFlushHand()))).isFalse();
+    }
 }

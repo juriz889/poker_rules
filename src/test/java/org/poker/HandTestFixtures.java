@@ -29,4 +29,20 @@ public final class HandTestFixtures {
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.TEN, Suit.CLUBS));
     }
+
+    public static List<Card> createStraightHand() {
+        return List.of(new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.QUEEN, Suit.DIAMONDS),
+                new Card(Rank.JACK, Suit.CLUBS),
+                new Card(Rank.TEN, Suit.CLUBS));
+    }
+
+    public static List<Card> createFlushHand() {
+        return List.of(new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.FIVE, Suit.CLUBS),
+                new Card(Rank.JACK, Suit.CLUBS),
+                new Card(Rank.TEN, Suit.CLUBS));
+    }
 }
