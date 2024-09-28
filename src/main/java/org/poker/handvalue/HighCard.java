@@ -7,4 +7,9 @@ public final class HighCard implements HandValue {
     public boolean matches(Hand hand) {
         return true;
     }
+
+    @Override
+    public int rank() {
+        return 0;
+    }
 }

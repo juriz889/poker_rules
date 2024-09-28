@@ -24,4 +24,9 @@ public final class StraightFlush implements HandValue {
         }
         return true;
     }
+
+    @Override
+    public int rank() {
+        return 100;
+    }
 }
