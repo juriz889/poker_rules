@@ -1,8 +1,14 @@
 package org.poker;
 
 import java.util.Collection;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
-public record Hand(String name, Collection<Card> cards) {
+public final class Hand {
+    private final String name;
+    private final Collection<Card> cards;
+    private final SortedSet<Card> sortedCards;
+
     /**
      * @param name  then name of the hand e.g. hand one
      * @param cards should be a collection of exactly 5 cards
@@ -14,5 +20,10 @@ public record Hand(String name, Collection<Card> cards) {
         }
         this.name = name;
         this.cards = cards;
+        sortedCards = new TreeSet<>(cards);
+    }
+
+    public SortedSet<Card> getSortedCards() {
+        return new TreeSet<>(cards);
     }
 }

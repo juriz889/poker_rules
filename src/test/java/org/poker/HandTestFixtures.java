@@ -2,7 +2,9 @@ package org.poker;
 
 import java.util.List;
 
-public class HandTestFixtures {
+public final class HandTestFixtures {
+    private HandTestFixtures() {
+    }
 
     public static List<Card> createHighCardHand() {
         return List.of(new Card(Rank.ACE, Suit.CLUBS),
