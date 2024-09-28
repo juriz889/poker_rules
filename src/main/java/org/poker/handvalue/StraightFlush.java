@@ -8,7 +8,7 @@ import java.util.SortedSet;
 
 public final class StraightFlush implements HandValue {
     @Override
-    public boolean isMet(Hand hand) {
+    public boolean matches(Hand hand) {
         SortedSet<Card> sortedCards = hand.getSortedCards();
         Iterator<Card> iterator = sortedCards.iterator();
         Card lastCard = iterator.next();

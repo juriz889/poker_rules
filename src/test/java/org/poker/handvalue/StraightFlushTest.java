@@ -17,16 +17,16 @@ class StraightFlushTest {
 
     @Test
     void handHasRoyalStraightFlush_isMet_returnsTrue() {
-        assertThat(cut.isMet(new Hand("some hand", HandTestFixtures.createRoyalFlushHand()))).isTrue();
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createRoyalFlushHand()))).isTrue();
     }
 
     @Test
     void handHasRegularStraightFlush_isMet_returnsTrue() {
-        assertThat(cut.isMet(new Hand("some hand", HandTestFixtures.createStraightFlushHand()))).isTrue();
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createStraightFlushHand()))).isTrue();
     }
 
     @Test
-    void handHasHighCard_isMet_returnsFalse() {
-        assertThat(cut.isMet(new Hand("some hand", HandTestFixtures.createHighCardHand()))).isFalse();
+    void handHasHighCard_matches_returnsFalse() {
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createHighCardHand()))).isFalse();
     }
 }

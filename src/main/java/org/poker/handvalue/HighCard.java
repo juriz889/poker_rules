@@ -4,7 +4,7 @@ import org.poker.Hand;
 
 public final class HighCard implements HandValue {
     @Override
-    public boolean isMet(Hand hand) {
+    public boolean matches(Hand hand) {
         return true;
     }
 }

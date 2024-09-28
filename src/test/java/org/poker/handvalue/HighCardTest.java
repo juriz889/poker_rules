@@ -16,7 +16,7 @@ class HighCardTest {
     }
 
     @Test
-    void anyHand_isMet_true() {
-        assertThat(cut.isMet(new Hand("any hand", HandTestFixtures.createRoyalFlushHand()))).isTrue();
+    void anyHand_matches_true() {
+        assertThat(cut.matches(new Hand("any hand", HandTestFixtures.createRoyalFlushHand()))).isTrue();
     }
 }
