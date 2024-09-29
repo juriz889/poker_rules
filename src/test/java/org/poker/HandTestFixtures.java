@@ -6,7 +6,7 @@ public final class HandTestFixtures {
     private HandTestFixtures() {
     }
 
-    public static List<Card> createHighCardHand() {
+    public static List<Card> createHighCardAceHighHand() {
         return List.of(new Card(Rank.ACE, Suit.CLUBS),
                 new Card(Rank.KING, Suit.DIAMONDS),
                 new Card(Rank.QUEEN, Suit.HEARTS),

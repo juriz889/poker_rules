@@ -27,7 +27,7 @@ class StraightFlushTest {
 
     @Test
     void handHasHighCard_matches_returnsFalse() {
-        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createHighCardHand()))).isFalse();
+        assertThat(cut.matches(new Hand("some hand", HandTestFixtures.createHighCardAceHighHand()))).isFalse();
     }
 
     @Test
