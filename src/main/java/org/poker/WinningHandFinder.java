@@ -17,8 +17,10 @@ public final class WinningHandFinder {
         HandValue handValue2 = handValueFinder.getHandValue(hand2);
         if (handValue1.rank() < handValue2.rank()) {
             return Optional.of(hand2);
-        } else {
+        } else if (handValue1.rank() > handValue2.rank()) {
             return Optional.of(hand1);
+        } else {
+            return handValue1.compareTwoHandsOfSameValue(hand1, hand2).getWinner();
         }
     }
 }

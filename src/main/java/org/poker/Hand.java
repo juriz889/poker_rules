@@ -10,7 +10,7 @@ public final class Hand {
     private final SortedSet<Card> sortedCards;
 
     /**
-     * @param name  then name of the hand e.g. hand one
+     * @param name the name of the hand e.g. hand one
      * @param cards should be a collection of exactly 5 cards
      * @throws IllegalArgumentException if the number of cards is not 5
      */

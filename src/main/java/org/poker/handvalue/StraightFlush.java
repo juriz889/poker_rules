@@ -29,4 +29,13 @@ public final class StraightFlush implements HandValue {
     public int rank() {
         return 100;
     }
+
+    @Override
+    public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
+        return null;
+    }
+
+    public int compareTo(HandValue o) {
+        return Integer.compare(rank(), o.rank());
+    }
 }
