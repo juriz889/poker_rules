@@ -32,10 +32,14 @@ public final class StraightFlush implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        return null;
+        Card hand1LastCard = hand1.getSortedCards().last();
+        Card hand2LastCard = hand2.getSortedCards().last();
+        if (hand1LastCard.rankValue() < hand2LastCard.rankValue()) {
+            return Winner.of(hand2);
+        } else if (hand1LastCard.rankValue() > hand2LastCard.rankValue()) {
+            return Winner.of(hand1);
+        }
+        return Winner.noWinner();
     }
 
-    public int compareTo(HandValue o) {
-        return Integer.compare(rank(), o.rank());
-    }
 }

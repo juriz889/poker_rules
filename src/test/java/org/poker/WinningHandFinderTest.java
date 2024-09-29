@@ -23,10 +23,17 @@ class WinningHandFinderTest {
 
 
     @Test
-    void hand1AndHand2AreSame_findWinner_noWinner() {
+    void hand1AndHand2AreBothHighCard_findWinner_noWinner() {
         Hand hand1 = new Hand("Hand 1", HandTestFixtures.createHighCardAceHighHand());
         Hand hand2 = new Hand("Hand 2", HandTestFixtures.createHighCardAceHighHand());
         assertThat(cut.findWindingHand(hand1, hand2)).isEmpty();
+    }
+
+    @Test
+    void hand1IsRoyalFlushAndHand2IsStraightFlush_findWinner_hand1() {
+        Hand hand1 = new Hand("Hand 1", HandTestFixtures.createRoyalFlushHand());
+        Hand hand2 = new Hand("Hand 2", HandTestFixtures.createStraightFlushHand());
+        assertThat(cut.findWindingHand(hand1, hand2)).contains(hand1);
     }
 
     @Test
