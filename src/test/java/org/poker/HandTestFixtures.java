@@ -1,5 +1,6 @@
 package org.poker;
 
+import java.util.Collection;
 import java.util.List;
 
 public final class HandTestFixtures {
@@ -44,5 +45,13 @@ public final class HandTestFixtures {
                 new Card(Rank.FIVE, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.TEN, Suit.CLUBS));
+    }
+
+    public static List<Card> createPairHand() {
+        return List.of(new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.FIVE, Suit.CLUBS),
+                new Card(Rank.JACK, Suit.CLUBS),
+                new Card(Rank.NINE, Suit.HEARTS));
     }
 }

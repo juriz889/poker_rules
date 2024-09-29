@@ -4,12 +4,13 @@ import org.poker.Card;
 import org.poker.Hand;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.SortedSet;
 
 public final class StraightFlush implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        SortedSet<Card> sortedCards = hand.getSortedCards();
+        List<Card> sortedCards = hand.getSortedCards();
         Iterator<Card> iterator = sortedCards.iterator();
         Card lastCard = iterator.next();
         while (iterator.hasNext()) {
@@ -32,8 +33,8 @@ public final class StraightFlush implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Card hand1LastCard = hand1.getSortedCards().last();
-        Card hand2LastCard = hand2.getSortedCards().last();
+        Card hand1LastCard = hand1.getSortedCards().getLast();
+        Card hand2LastCard = hand2.getSortedCards().getLast();
         if (hand1LastCard.rankValue() < hand2LastCard.rankValue()) {
             return Winner.of(hand2);
         } else if (hand1LastCard.rankValue() > hand2LastCard.rankValue()) {
