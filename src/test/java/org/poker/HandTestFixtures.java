@@ -79,4 +79,12 @@ public final class HandTestFixtures {
                 new Card(Rank.TWO, Suit.SPADES),
                 new Card(Rank.SIX, Suit.HEARTS));
     }
+
+    public static Collection<Card> createFourOfAKind() {
+        return List.of(new Card(Rank.SIX, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.DIAMONDS),
+                new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.TWO, Suit.SPADES),
+                new Card(Rank.TWO, Suit.CLUBS));
+    }
 }

@@ -83,4 +83,11 @@ class WinningHandFinderTest {
         Hand hand2 = new Hand("Hand 2", HandTestFixtures.createFlushHand());
         assertThat(cut.findWindingHand(hand1, hand2)).contains(hand1);
     }
+
+    @Test
+    void hand1HasFullHouseAndHandTwoHasFourOfKind_findWinner_hand2() {
+        Hand hand1 = new Hand("Hand 1", HandTestFixtures.createFullHouse());
+        Hand hand2 = new Hand("Hand 2", HandTestFixtures.createFourOfAKind());
+        assertThat(cut.findWindingHand(hand1, hand2)).contains(hand2);
+    }
 }
