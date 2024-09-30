@@ -28,7 +28,7 @@ public final class Simulation {
         System.out.println("Hand one: " + hand1);
         System.out.println("Hand two: " + hand2);
         WinningHandFinder winningHandFinder = new WinningHandFinder(new HandValueFinder());
-        Optional<Hand> windingHand = winningHandFinder.findWindingHand(hand1, hand2);
+        Optional<Hand> windingHand = winningHandFinder.findWinningHand(hand1, hand2);
         System.out.println("Winner is " + windingHand.map(Hand::getName).orElse("no one"));
     }
 

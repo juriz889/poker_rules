@@ -12,7 +12,7 @@ public final class WinningHandFinder {
         this.handValueFinder = handValueFinder;
     }
 
-    public Optional<Hand> findWindingHand(Hand hand1, Hand hand2) {
+    public Optional<Hand> findWinningHand(Hand hand1, Hand hand2) {
         HandValue handValue1 = handValueFinder.getHandValue(hand1);
         System.out.println("Hand one has value : " + handValue1.handName(hand1));
         HandValue handValue2 = handValueFinder.getHandValue(hand2);
