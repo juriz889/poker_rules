@@ -20,8 +20,8 @@ public final class Simulation {
         System.out.println("Hand one is: " + hand1);
         System.out.println("Hand two is: " + hand2);
         WinningHandFinder winningHandFinder = new WinningHandFinder(new HandValueFinder());
-        Optional<Hand> windingHand = winningHandFinder.findWinningHand(hand1, hand2);
-        System.out.println("Winner is " + windingHand.map(Hand::getName).orElse("no one"));
+        Optional<Hand> winningHand = winningHandFinder.findWinningHand(hand1, hand2);
+        System.out.println("Winner is " + winningHand.map(Hand::getName).orElse("no one"));
     }
 
     private static void dealCards(LinkedList<Card> deck, List<Card> handOneCards, List<Card> handTwoCards) {
