@@ -6,7 +6,9 @@ import java.util.List;
 
 public final class HandValueFinder {
     private static final List<HandValue> ALL_HAND_VALUES = List.of(
-            new StraightFlush(), new Flush(),
+            new StraightFlush(),
+            new FullHouse(),
+            new Flush(),
             new Straight(),
             new ThreeOfAKind(),
             new TwoPairs(),

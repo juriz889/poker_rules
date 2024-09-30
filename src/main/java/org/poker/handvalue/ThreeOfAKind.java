@@ -20,13 +20,17 @@ public final class ThreeOfAKind implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Card pairCards1 = getThreeOfAKindCards(hand1).getFirst();
-        Card pairCards2 = getThreeOfAKindCards(hand2).getFirst();
-        Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
+        Winner winner = compareThreeOfAKind(hand1, hand2);
         if (winner.getWinner().isEmpty()) {
             return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
         }
         return winner;
+    }
+
+    public Winner compareThreeOfAKind(Hand hand1, Hand hand2) {
+        Card pairCards1 = getThreeOfAKindCards(hand1).getFirst();
+        Card pairCards2 = getThreeOfAKindCards(hand2).getFirst();
+        return HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
     }
 
     private List<Card> getThreeOfAKindCards(Hand hand) {

@@ -72,4 +72,11 @@ public final class HandTestFixtures {
                 new Card(Rank.THREE, Suit.CLUBS));
     }
 
+    public static Collection<Card> createFullHouse() {
+        return List.of(new Card(Rank.SIX, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.DIAMONDS),
+                new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.TWO, Suit.SPADES),
+                new Card(Rank.SIX, Suit.HEARTS));
+    }
 }
