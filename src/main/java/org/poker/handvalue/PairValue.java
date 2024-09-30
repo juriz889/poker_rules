@@ -10,11 +10,7 @@ import java.util.stream.Collectors;
 public final class PairValue implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
-        Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
-                .collect(Collectors.groupingBy(Card::rankValue));
-        return cardsByRank.values().stream()
-                .anyMatch(cards -> cards.size() > 1);
+        return getPairCards(hand).size() == Constants.PAIR_SIZE;
     }
 
     @Override
@@ -24,8 +20,8 @@ public final class PairValue implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Card pairCards1 = getPairCards(hand1);
-        Card pairCards2 = getPairCards(hand2);
+        Card pairCards1 = getPairCards(hand1).getFirst();
+        Card pairCards2 = getPairCards(hand2).getFirst();
         Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
         if (winner.getWinner().isEmpty()) {
             return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
@@ -34,13 +30,12 @@ public final class PairValue implements HandValue {
 
     }
 
-    private Card getPairCards(Hand hand) {
+    private List<Card> getPairCards(Hand hand) {
         List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
         Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
                 .collect(Collectors.groupingBy(Card::rankValue));
         return cardsByRank.values().stream()
-                .filter(cards -> cards.size() > 1)
-                .findFirst()
-                .orElseThrow().getFirst();
+                .filter(cards -> cards.size() == Constants.PAIR_SIZE)
+                .findFirst().orElse(List.of());
     }
 }

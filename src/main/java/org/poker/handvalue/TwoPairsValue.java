@@ -11,11 +11,7 @@ import java.util.stream.Stream;
 public final class TwoPairsValue implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
-        Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
-                .collect(Collectors.groupingBy(Card::rankValue));
-        return cardsByRank.values().stream()
-                .filter(cards -> cards.size() > 1).count() > 1;
+        return getPairCards(hand).size() == Constants.TWO_PAIRS;
     }
 
     @Override
@@ -43,7 +39,7 @@ public final class TwoPairsValue implements HandValue {
         Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
                 .collect(Collectors.groupingBy(Card::rankValue));
         return cardsByRank.values().stream()
-                .filter(cards -> cards.size() > 1)
+                .filter(cards -> cards.size() == Constants.PAIR_SIZE)
                 .flatMap(l -> Stream.of(l.getFirst()))
                 .collect(Collectors.toList());
     }
