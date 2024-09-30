@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public final class PairValue implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        List<Card> sortedCards = hand.getSortedCards();
+        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
         Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
                 .collect(Collectors.groupingBy(Card::rankValue));
         return cardsByRank.values().stream()
@@ -35,7 +35,7 @@ public final class PairValue implements HandValue {
     }
 
     private Card getPairCards(Hand hand) {
-        List<Card> sortedCards = hand.getSortedCards();
+        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
         Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
                 .collect(Collectors.groupingBy(Card::rankValue));
         return cardsByRank.values().stream()

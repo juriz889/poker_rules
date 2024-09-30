@@ -9,12 +9,12 @@ import java.util.List;
 public final class StraightFlush implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        List<Card> sortedCards = hand.getSortedCards();
+        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
         Iterator<Card> iterator = sortedCards.iterator();
         Card lastCard = iterator.next();
         while (iterator.hasNext()) {
             Card currentCard = iterator.next();
-            if (currentCard.rankValue() != lastCard.rankValue() + 1) {
+            if (currentCard.rankValue() != lastCard.rankValue() - 1) {
                 return false;
             }
             if (currentCard.suit() != lastCard.suit()) {
@@ -32,8 +32,8 @@ public final class StraightFlush implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Card hand1LastCard = hand1.getSortedCards().getLast();
-        Card hand2LastCard = hand2.getSortedCards().getLast();
+        Card hand1LastCard = hand1.getCardsSortedFromHighestToLowest().getLast();
+        Card hand2LastCard = hand2.getCardsSortedFromHighestToLowest().getLast();
         return HandCardWinnerChecker.checkWinner(new HandCard(hand1, hand1LastCard), new HandCard(hand2, hand2LastCard));
     }
 

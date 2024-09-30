@@ -26,9 +26,9 @@ public final class Hand {
         sortedCards = new TreeSet<>(cards);
     }
 
-    public List<Card> getSortedCards() {
+    public List<Card> getCardsSortedFromHighestToLowest() {
         ArrayList<Card> sortedCards = new ArrayList<>(cards);
-        sortedCards.sort(Comparator.naturalOrder());
+        sortedCards.sort(Comparator.reverseOrder());
         return sortedCards;
     }
 

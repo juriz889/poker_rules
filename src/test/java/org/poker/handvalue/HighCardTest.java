@@ -50,7 +50,7 @@ class HighCardTest {
     @Test
     void bothHandsAreAceHighButHand2HasBetterKicker_compareTwoHandsOfSameValue_hand2() {
         List<Card> hand1Cards = List.of(new Card(Rank.ACE, Suit.CLUBS),
-                new Card(Rank.KING, Suit.DIAMONDS),
+                new Card(Rank.TEN, Suit.DIAMONDS),
                 new Card(Rank.QUEEN, Suit.HEARTS),
                 new Card(Rank.JACK, Suit.SPADES),
                 new Card(Rank.SIX, Suit.CLUBS));
@@ -58,7 +58,7 @@ class HighCardTest {
                 new Card(Rank.KING, Suit.DIAMONDS),
                 new Card(Rank.QUEEN, Suit.HEARTS),
                 new Card(Rank.JACK, Suit.SPADES),
-                new Card(Rank.EIGHT, Suit.CLUBS));
+                new Card(Rank.SIX, Suit.CLUBS));
         Hand hand1 = new Hand("Hand 1", hand1Cards);
         Hand hand2 = new Hand("Hand 2", hand2Cards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand2));

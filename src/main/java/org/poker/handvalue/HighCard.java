@@ -19,8 +19,8 @@ public final class HighCard implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Iterator<Card> cardIteratorHand1 = hand1.getSortedCards().iterator();
-        Iterator<Card> cardIteratorHand2 = hand2.getSortedCards().iterator();
+        Iterator<Card> cardIteratorHand1 = hand1.getCardsSortedFromHighestToLowest().iterator();
+        Iterator<Card> cardIteratorHand2 = hand2.getCardsSortedFromHighestToLowest().iterator();
         while (cardIteratorHand1.hasNext() && cardIteratorHand2.hasNext()) {
             Card card1 = cardIteratorHand1.next();
             Card card2 = cardIteratorHand2.next();
