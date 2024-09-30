@@ -70,4 +70,15 @@ final class FullHouseTest {
         Hand hand1 = new Hand("any hand", handOneCards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.noWinner());
     }
+
+    @Test
+    void testName() {
+        List<Card> handOneCards = List.of(new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.HEARTS));
+        Hand hand1 = new Hand("any hand", handOneCards);
+        assertThat(cut.handName(hand1)).isEqualTo("Full House with Three of a Kind of ACE");
+    }
 }

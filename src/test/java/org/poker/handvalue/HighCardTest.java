@@ -63,4 +63,15 @@ class HighCardTest {
         Hand hand2 = new Hand("Hand 2", hand2Cards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand2));
     }
+
+    @Test
+    void testName() {
+        List<Card> hand1Cards = List.of(new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.TEN, Suit.DIAMONDS),
+                new Card(Rank.QUEEN, Suit.HEARTS),
+                new Card(Rank.JACK, Suit.SPADES),
+                new Card(Rank.SIX, Suit.CLUBS));
+        Hand hand1 = new Hand("Hand 1", hand1Cards);
+        assertThat(cut.handName(hand1)).isEqualTo("High Card with ACE");
+    }
 }
