@@ -53,7 +53,7 @@ public final class Hand {
     @Override
     public String toString() {
         return "Hand{" +
-                ", name='" + name + '\'' +
+                " name='" + name + '\'' +
                 ", cards=" + sortedCards +
                 '}';
     }
