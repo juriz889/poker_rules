@@ -18,6 +18,7 @@ class TwoPairsTest {
     void setUp() {
         cut = new TwoPairs();
     }
+
     @Test
     void bothHandsAreTwoPairButHand2HasBetterPair_compare_hand2() {
         List<Card> handOneCards = List.of(new Card(Rank.NINE, Suit.CLUBS),
@@ -34,6 +35,7 @@ class TwoPairsTest {
         Hand hand1 = new Hand("any hand", handOneCards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand2));
     }
+
     @Test
     void bothHandsAreTwoPairButHand2HasLowerSecondPair_compare_hand1() {
         List<Card> handOneCards = List.of(new Card(Rank.NINE, Suit.CLUBS),
@@ -50,6 +52,7 @@ class TwoPairsTest {
         Hand hand1 = new Hand("any hand", handOneCards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand1));
     }
+
     @Test
     void bothHandsAreTwoPairWithSameCardsButHand1HasBetterKicker_compare_hand1() {
         List<Card> handOneCards = List.of(new Card(Rank.NINE, Suit.CLUBS),
@@ -65,5 +68,16 @@ class TwoPairsTest {
         Hand hand2 = new Hand("hand 2", handTwoCards);
         Hand hand1 = new Hand("any hand", handOneCards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand1));
+    }
+
+    @Test
+    void testName() {
+        List<Card> handTwoCards = List.of(new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.CLUBS),
+                new Card(Rank.NINE, Suit.HEARTS));
+        Hand hand2 = new Hand("hand 2", handTwoCards);
+        assertThat(cut.handName(hand2)).isEqualTo("Two Pairs of NINE and KING");
     }
 }

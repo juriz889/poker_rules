@@ -2,6 +2,7 @@ package org.poker.handvalue;
 
 import org.poker.Card;
 import org.poker.Hand;
+import org.poker.Rank;
 
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,8 @@ public final class TwoPairs implements HandValue {
 
     @Override
     public String handName(Hand hand) {
-        return "Two Pairs of " + getPairCards(hand);
+        List<Rank> list = getPairCards(hand).stream().map(Card::rank).toList();
+        return "Two Pairs of " + list.stream().map(Rank::toString).collect(Collectors.joining(" and "));
     }
 
     private List<Card> getPairCards(Hand hand) {

@@ -67,6 +67,12 @@ class StraightFlushTest {
     }
 
     @Test
+    void testName() {
+        Hand hand2 = new Hand("Hand 2", HandTestFixtures.createRoyalFlushHand());
+        assertThat(cut.handName(hand2)).isEqualTo("Straight Flush withStraight from TEN to ACE");
+    }
+
+    @Test
     void handTwoIsStraightFromAceLowAndHandTwoIsHandFromTwo_compare_hand2() {
         Hand hand1 = new Hand("Hand 1", List.of(new Card(Rank.ACE, Suit.CLUBS),
                 new Card(Rank.TWO, Suit.DIAMONDS),

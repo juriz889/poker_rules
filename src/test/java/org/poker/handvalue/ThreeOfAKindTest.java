@@ -67,5 +67,13 @@ class ThreeOfAKindTest {
         assertThat(cut.compareTwoHandsOfSameValue(new Hand("any hand", handOneCards), new Hand("hand 2", handTwoCards))).isEqualTo(Winner.of(new Hand("any hand", handOneCards)));
     }
 
-
+    @Test
+    void testName() {
+        List<Card> handTwoCards = List.of(new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.CLUBS),
+                new Card(Rank.NINE, Suit.CLUBS),
+                new Card(Rank.NINE, Suit.HEARTS));
+        assertThat(cut.handName(new Hand("hand 2", handTwoCards))).isEqualTo("Three of a Kind of NINE");
+    }
 }
