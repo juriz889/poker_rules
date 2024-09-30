@@ -18,6 +18,11 @@ public final class ThreeOfAKind implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Three of a Kind";
+    }
+
+    @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
         return ofAKind.compareTwoHandsOfSameValue(hand1, hand2);
     }

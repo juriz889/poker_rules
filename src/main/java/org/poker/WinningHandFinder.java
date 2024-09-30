@@ -14,7 +14,9 @@ public final class WinningHandFinder {
 
     public Optional<Hand> findWindingHand(Hand hand1, Hand hand2) {
         HandValue handValue1 = handValueFinder.getHandValue(hand1);
+        System.out.println("Hand one has value : " + handValue1.handName());
         HandValue handValue2 = handValueFinder.getHandValue(hand2);
+        System.out.println("Hand two has value : " + handValue2.handName());
         if (handValue1.rank() < handValue2.rank()) {
             return Optional.of(hand2);
         } else if (handValue1.rank() > handValue2.rank()) {

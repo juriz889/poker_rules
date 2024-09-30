@@ -42,6 +42,11 @@ public final class Straight implements HandValue {
         return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
     }
 
+    @Override
+    public String handName() {
+        return "Straight";
+    }
+
     private static boolean isStraightAceLow(Hand hand1) {
         List<Card> cardsSortedFromHighestToLowest = hand1.getCardsSortedFromHighestToLowest();
         return cardsSortedFromHighestToLowest.getFirst().rank() == Rank.ACE && cardsSortedFromHighestToLowest.getLast().rank() == Rank.TWO;

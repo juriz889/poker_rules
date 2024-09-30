@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public final class Hand {
     private final String name;
     private final Collection<Card> cards;
-    private final SortedSet<Card> sortedCards;
+    private final List<Card> sortedCards;
 
     /**
      * @param name  the name of the hand e.g. hand one
@@ -23,12 +21,11 @@ public final class Hand {
         }
         this.name = name;
         this.cards = cards;
-        sortedCards = new TreeSet<>(cards);
+        sortedCards = new ArrayList<>(cards);
+        sortedCards.sort(Comparator.reverseOrder());
     }
 
     public List<Card> getCardsSortedFromHighestToLowest() {
-        ArrayList<Card> sortedCards = new ArrayList<>(cards);
-        sortedCards.sort(Comparator.reverseOrder());
         return sortedCards;
     }
 
@@ -39,6 +36,10 @@ public final class Hand {
 
         Hand hand = (Hand) o;
         return name.equals(hand.name) && cards.equals(hand.cards) && sortedCards.equals(hand.sortedCards);
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -52,9 +53,8 @@ public final class Hand {
     @Override
     public String toString() {
         return "Hand{" +
-                "cards=" + cards +
                 ", name='" + name + '\'' +
-                ", sortedCards=" + sortedCards +
+                ", cards=" + sortedCards +
                 '}';
     }
 }

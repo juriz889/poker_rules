@@ -23,6 +23,11 @@ public final class Flush implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Flush";
+    }
+
+    @Override
     public int rank() {
         return 25;
     }

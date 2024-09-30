@@ -12,6 +12,11 @@ public final class StraightFlush implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Straight Flush";
+    }
+
+    @Override
     public int rank() {
         return 100;
     }

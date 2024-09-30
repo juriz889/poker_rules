@@ -12,6 +12,11 @@ public final class FullHouse implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Full House";
+    }
+
+    @Override
     public int rank() {
         return 30;
     }

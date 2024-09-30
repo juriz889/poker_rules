@@ -17,7 +17,7 @@ public final class HandValueFinder {
             new HighCard()
     );
 
-    public static HandValue getHandValue(Hand hand) {
+    public HandValue getHandValue(Hand hand) {
         return ALL_HAND_VALUES.stream()
                 .filter(handValue -> handValue.matches(hand))
                 .findFirst()

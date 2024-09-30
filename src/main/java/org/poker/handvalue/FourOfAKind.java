@@ -11,6 +11,11 @@ public final class FourOfAKind implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Four of a Kind ";
+    }
+
+    @Override
     public int rank() {
         return 50;
     }

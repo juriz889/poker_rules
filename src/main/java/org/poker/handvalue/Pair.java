@@ -11,6 +11,11 @@ public final class Pair implements HandValue {
     }
 
     @Override
+    public String handName() {
+        return "Pair";
+    }
+
+    @Override
     public int rank() {
         return 5;
     }

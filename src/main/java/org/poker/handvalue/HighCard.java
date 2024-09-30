@@ -11,6 +11,10 @@ public final class HighCard implements HandValue {
         return true;
     }
 
+    @Override
+    public String handName() {
+        return "High Card";
+    }
 
     @Override
     public int rank() {
