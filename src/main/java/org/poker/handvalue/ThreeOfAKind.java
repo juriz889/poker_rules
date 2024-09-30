@@ -3,42 +3,30 @@ package org.poker.handvalue;
 import org.poker.Card;
 import org.poker.Hand;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public final class ThreeOfAKind implements HandValue {
+    private static final int RANK = 15;
+    private final OfAKind ofAKind = new OfAKind(Constants.THREE_OF_KIND_SIZE);
+
     @Override
     public boolean matches(Hand hand) {
-        return getThreeOfAKindCards(hand).size() == Constants.THREE_OF_KIND_SIZE;
+        return ofAKind.matches(hand);
     }
 
     @Override
     public int rank() {
-        return 15;
+        return RANK;
     }
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Winner winner = compareThreeOfAKind(hand1, hand2);
-        if (winner.getWinner().isEmpty()) {
-            return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
-        }
-        return winner;
+        return ofAKind.compareTwoHandsOfSameValue(hand1, hand2);
     }
 
     public Winner compareThreeOfAKind(Hand hand1, Hand hand2) {
-        Card pairCards1 = getThreeOfAKindCards(hand1).getFirst();
-        Card pairCards2 = getThreeOfAKindCards(hand2).getFirst();
+        Card pairCards1 = ofAKind.getCardsOfAKindFromHand(hand1).getFirst();
+        Card pairCards2 = ofAKind.getCardsOfAKindFromHand(hand2).getFirst();
         return HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
     }
 
-    private List<Card> getThreeOfAKindCards(Hand hand) {
-        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
-        Map<Integer, List<Card>> cardsByRank = sortedCards.stream()
-                .collect(Collectors.groupingBy(Card::rankValue));
-        return cardsByRank.values().stream()
-                .filter(cards -> cards.size() == Constants.THREE_OF_KIND_SIZE)
-                .findFirst().orElse(List.of());
-    }
 }
+
