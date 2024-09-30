@@ -11,8 +11,8 @@ public final class FourOfAKind implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Four of a Kind ";
+    public String handName(Hand hand) {
+        return "Four of a Kind of " + ofAKind.getCardsOfAKindFromHand(hand).getFirst().rank();
     }
 
     @Override

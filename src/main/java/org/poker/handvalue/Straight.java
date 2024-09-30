@@ -43,8 +43,8 @@ public final class Straight implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Straight";
+    public String handName(Hand hand) {
+        return "Straight from " + hand.getCardsSortedFromHighestToLowest().getLast().rank() + " to " + hand.getCardsSortedFromHighestToLowest().getFirst().rank();
     }
 
     private static boolean isStraightAceLow(Hand hand1) {

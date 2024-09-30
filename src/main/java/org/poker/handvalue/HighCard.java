@@ -12,8 +12,8 @@ public final class HighCard implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "High Card";
+    public String handName(Hand hand) {
+        return "High Card with " + hand.getCardsSortedFromHighestToLowest().getFirst().rank();
     }
 
     @Override

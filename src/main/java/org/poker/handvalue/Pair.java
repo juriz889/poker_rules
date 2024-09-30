@@ -11,8 +11,8 @@ public final class Pair implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Pair";
+    public String handName(Hand hand) {
+        return "Pair of " + ofAKind.getCardsOfAKindFromHand(hand).getFirst().rank();
     }
 
     @Override

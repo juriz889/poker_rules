@@ -23,8 +23,8 @@ public final class Flush implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Flush";
+    public String handName(Hand hand) {
+        return "Flush of " + hand.getCardsSortedFromHighestToLowest().getFirst().suit();
     }
 
     @Override

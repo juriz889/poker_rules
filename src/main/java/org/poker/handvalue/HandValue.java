@@ -5,7 +5,7 @@ import org.poker.Hand;
 public interface HandValue {
     boolean matches(Hand hand);
 
-    String handName();
+    String handName(Hand hand);
 
     int rank();
 

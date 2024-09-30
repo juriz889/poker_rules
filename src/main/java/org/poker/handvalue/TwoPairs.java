@@ -36,8 +36,8 @@ public final class TwoPairs implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Two Pairs";
+    public String handName(Hand hand) {
+        return "Two Pairs of " + getPairCards(hand);
     }
 
     private List<Card> getPairCards(Hand hand) {

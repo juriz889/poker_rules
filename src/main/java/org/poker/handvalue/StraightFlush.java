@@ -12,8 +12,8 @@ public final class StraightFlush implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Straight Flush";
+    public String handName(Hand hand) {
+        return "Straight Flush with" + straight.handName(hand);
     }
 
     @Override

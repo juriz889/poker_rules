@@ -14,6 +14,7 @@ class FlushTest {
     void setUp() {
         cut = new Flush();
     }
+
     @Test
     void hand1IsAceHighAndHand2IsLower_compareWithSame_hand1() {
         Hand hand1 = new Hand("Hand 1", HandTestFixtures.createRoyalFlushHand());
@@ -33,5 +34,11 @@ class FlushTest {
         Hand hand1 = new Hand("Hand 1", HandTestFixtures.createRoyalFlushHand());
         Hand hand2 = new Hand("Hand 2", HandTestFixtures.createRoyalFlushHand());
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.noWinner());
+    }
+
+    @Test
+    void testName() {
+        Hand hand1 = new Hand("Hand 1", HandTestFixtures.createRoyalFlushHand());
+        assertThat(cut.handName(hand1)).isEqualTo("Flush of CLUBS");
     }
 }

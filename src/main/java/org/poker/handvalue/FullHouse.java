@@ -12,8 +12,8 @@ public final class FullHouse implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Full House";
+    public String handName(Hand hand) {
+        return "Full House with " + threeOfAKind.handName(hand);
     }
 
     @Override

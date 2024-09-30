@@ -18,8 +18,8 @@ public final class ThreeOfAKind implements HandValue {
     }
 
     @Override
-    public String handName() {
-        return "Three of a Kind";
+    public String handName(Hand hand) {
+        return "Three of a Kind of " + ofAKind.getCardsOfAKindFromHand(hand).getFirst().rank();
     }
 
     @Override
