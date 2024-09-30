@@ -54,4 +54,13 @@ public final class HandTestFixtures {
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.NINE, Suit.HEARTS));
     }
+
+
+    public static List<Card> createTwoPairsHand() {
+        return List.of(new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.DIAMONDS),
+                new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.THREE, Suit.SPADES),
+                new Card(Rank.THREE, Suit.CLUBS));
+    }
 }

@@ -24,10 +24,9 @@ public final class HighCard implements HandValue {
         while (cardIteratorHand1.hasNext() && cardIteratorHand2.hasNext()) {
             Card card1 = cardIteratorHand1.next();
             Card card2 = cardIteratorHand2.next();
-            if (card1.rankValue() < card2.rankValue()) {
-                return Winner.of(hand2);
-            } else if (card1.rankValue() > card2.rankValue()) {
-                return Winner.of(hand1);
+            Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, card1), new HandCard(hand2, card2));
+            if (winner.getWinner().isPresent()) {
+                return winner;
             }
         }
         return Winner.noWinner();

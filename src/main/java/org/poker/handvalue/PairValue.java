@@ -26,12 +26,12 @@ public final class PairValue implements HandValue {
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
         Card pairCards1 = getPairCards(hand1);
         Card pairCards2 = getPairCards(hand2);
-        if (pairCards1.rankValue() < pairCards2.rankValue()) {
-            return Winner.of(hand2);
-        } else if (pairCards1.rankValue() > pairCards2.rankValue()) {
-            return Winner.of(hand1);
+        Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
+        if (winner.getWinner().isEmpty()) {
+            return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
         }
-        return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
+        return winner;
+
     }
 
     private Card getPairCards(Hand hand) {

@@ -5,7 +5,6 @@ import org.poker.Hand;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.SortedSet;
 
 public final class StraightFlush implements HandValue {
     @Override
@@ -35,12 +34,7 @@ public final class StraightFlush implements HandValue {
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
         Card hand1LastCard = hand1.getSortedCards().getLast();
         Card hand2LastCard = hand2.getSortedCards().getLast();
-        if (hand1LastCard.rankValue() < hand2LastCard.rankValue()) {
-            return Winner.of(hand2);
-        } else if (hand1LastCard.rankValue() > hand2LastCard.rankValue()) {
-            return Winner.of(hand1);
-        }
-        return Winner.noWinner();
+        return HandCardWinnerChecker.checkWinner(new HandCard(hand1, hand1LastCard), new HandCard(hand2, hand2LastCard));
     }
 
 }

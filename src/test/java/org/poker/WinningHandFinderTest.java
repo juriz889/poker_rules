@@ -49,4 +49,10 @@ class WinningHandFinderTest {
         Hand hand2 = new Hand("Hand 2", HandTestFixtures.createPairHand());
         assertThat(cut.findWindingHand(hand1, hand2)).contains(hand2);
     }
+    @Test
+    void hand1HasTwoPairsAndHandTwoIsPair_findWinner_hand1() {
+        Hand hand1 = new Hand("Hand 1", HandTestFixtures.createTwoPairsHand());
+        Hand hand2 = new Hand("Hand 2", HandTestFixtures.createPairHand());
+        assertThat(cut.findWindingHand(hand1, hand2)).contains(hand1);
+    }
 }
