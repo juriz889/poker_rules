@@ -3,10 +3,11 @@ package org.poker.handvalue;
 import org.poker.Hand;
 
 public final class FourOfAKind implements HandValue {
+    private final OfAKind ofAKind = new OfAKind(Constants.FOUR_OF_KIND_SIZE);
 
     @Override
     public boolean matches(Hand hand) {
-        return false;
+        return ofAKind.matches(hand);
     }
 
     @Override
@@ -16,6 +17,6 @@ public final class FourOfAKind implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        return null;
+        return ofAKind.compareTwoHandsOfSameValue(hand1, hand2);
     }
 }
