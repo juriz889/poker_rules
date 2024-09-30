@@ -1,28 +1,14 @@
 package org.poker.handvalue;
 
-import org.poker.Card;
 import org.poker.Hand;
 
-import java.util.Iterator;
-import java.util.List;
-
 public final class StraightFlush implements HandValue {
+    private final Straight straight = new Straight();
+    private final Flush flush = new Flush();
+
     @Override
     public boolean matches(Hand hand) {
-        List<Card> sortedCards = hand.getCardsSortedFromHighestToLowest();
-        Iterator<Card> iterator = sortedCards.iterator();
-        Card lastCard = iterator.next();
-        while (iterator.hasNext()) {
-            Card currentCard = iterator.next();
-            if (currentCard.rankValue() != lastCard.rankValue() - 1) {
-                return false;
-            }
-            if (currentCard.suit() != lastCard.suit()) {
-                return false;
-            }
-            lastCard = currentCard;
-        }
-        return true;
+        return straight.matches(hand) && flush.matches(hand);
     }
 
     @Override
@@ -32,9 +18,7 @@ public final class StraightFlush implements HandValue {
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        Card hand1LastCard = hand1.getCardsSortedFromHighestToLowest().getLast();
-        Card hand2LastCard = hand2.getCardsSortedFromHighestToLowest().getLast();
-        return HandCardWinnerChecker.checkWinner(new HandCard(hand1, hand1LastCard), new HandCard(hand2, hand2LastCard));
+        return straight.compareTwoHandsOfSameValue(hand1, hand2);
     }
 
 }
