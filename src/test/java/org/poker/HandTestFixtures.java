@@ -71,4 +71,5 @@ public final class HandTestFixtures {
                 new Card(Rank.TWO, Suit.SPADES),
                 new Card(Rank.THREE, Suit.CLUBS));
     }
+
 }

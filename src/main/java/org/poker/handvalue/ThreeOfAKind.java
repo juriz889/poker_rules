@@ -27,7 +27,6 @@ public final class ThreeOfAKind implements HandValue {
             return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
         }
         return winner;
-
     }
 
     private List<Card> getThreeOfAKindCards(Hand hand) {
