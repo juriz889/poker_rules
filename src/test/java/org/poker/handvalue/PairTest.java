@@ -12,12 +12,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PairValueTest {
-    private PairValue cut;
+class PairTest {
+    private Pair cut;
 
     @BeforeEach
     void setUp() {
-        cut = new PairValue();
+        cut = new Pair();
     }
 
     @Test
@@ -37,7 +37,7 @@ class PairValueTest {
                 new Card(Rank.TWO, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.ACE, Suit.HEARTS));
-        cut = new PairValue();
+        cut = new Pair();
         Hand hand2 = new Hand("hand 2", handTwoCards);
         assertThat(cut.compareTwoHandsOfSameValue(new Hand("any hand", handOneCards), hand2)).isEqualTo(Winner.of(hand2));
     }
@@ -54,7 +54,7 @@ class PairValueTest {
                 new Card(Rank.TWO, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.THREE, Suit.HEARTS));
-        cut = new PairValue();
+        cut = new Pair();
         Hand hand2 = new Hand("hand 2", handTwoCards);
         Hand hand1 = new Hand("any hand", handOneCards);
         assertThat(cut.compareTwoHandsOfSameValue(hand1, hand2)).isEqualTo(Winner.of(hand1
@@ -73,7 +73,7 @@ class PairValueTest {
                 new Card(Rank.TWO, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.NINE, Suit.HEARTS));
-        cut = new PairValue();
+        cut = new Pair();
         assertThat(cut.compareTwoHandsOfSameValue(new Hand("any hand", handOneCards), new Hand("hand 2", handTwoCards))).isEqualTo(Winner.of(new Hand("any hand", handOneCards)));
     }
 }

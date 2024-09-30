@@ -7,8 +7,8 @@ import java.util.List;
 public final class HandValueFinder {
     private static final List<HandValue> ALL_HAND_VALUES = List.of(
             new StraightFlush(),
-            new TwoPairsValue(),
-            new PairValue(),
+            new TwoPairs(),
+            new Pair(),
             new HighCard()
     );
 

@@ -6,27 +6,23 @@ import org.poker.Hand;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public final class TwoPairsValue implements HandValue {
+public final class Pair implements HandValue {
     @Override
     public boolean matches(Hand hand) {
-        return getPairCards(hand).size() == Constants.TWO_PAIRS;
+        return getPairCards(hand).size() == Constants.PAIR_SIZE;
     }
 
     @Override
     public int rank() {
-        return 7;
+        return 5;
     }
 
     @Override
     public Winner compareTwoHandsOfSameValue(Hand hand1, Hand hand2) {
-        List<Card> pairCards1 = getPairCards(hand1);
-        List<Card> pairCards2 = getPairCards(hand2);
-        Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1.getLast()), new HandCard(hand2, pairCards2.getLast()));
-        if (winner.getWinner().isEmpty()) {
-            winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1.getFirst()), new HandCard(hand2, pairCards2.getFirst()));
-        }
+        Card pairCards1 = getPairCards(hand1).getFirst();
+        Card pairCards2 = getPairCards(hand2).getFirst();
+        Winner winner = HandCardWinnerChecker.checkWinner(new HandCard(hand1, pairCards1), new HandCard(hand2, pairCards2));
         if (winner.getWinner().isEmpty()) {
             return new HighCard().compareTwoHandsOfSameValue(hand1, hand2);
         }
@@ -40,8 +36,6 @@ public final class TwoPairsValue implements HandValue {
                 .collect(Collectors.groupingBy(Card::rankValue));
         return cardsByRank.values().stream()
                 .filter(cards -> cards.size() == Constants.PAIR_SIZE)
-                .flatMap(l -> Stream.of(l.getFirst()))
-                .collect(Collectors.toList());
+                .findFirst().orElse(List.of());
     }
-
 }

@@ -10,14 +10,13 @@ import org.poker.Suit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class TwoPairsValueTest {
-    private TwoPairsValue cut;
+class TwoPairsTest {
+    private TwoPairs cut;
 
     @BeforeEach
     void setUp() {
-        cut = new TwoPairsValue();
+        cut = new TwoPairs();
     }
     @Test
     void bothHandsAreTwoPairButHand2HasBetterPair_compare_hand2() {
